@@ -25,3 +25,7 @@ _testmain.go
 
 # test data
 data/test_data.txt
+
+# binaries
+data/data
+picknames
