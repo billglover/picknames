@@ -23,5 +23,5 @@ My first attempt wasn't written in Go, but for the sake of comparison between al
 
 | Attempt | Pick 1     | Pick 5     | Pick 10    |
 | ------- | ---------- | ---------- | ---------- |
-| 1vvvvvv | 5424 ns/op | 5368 ns/op | 5629 ns/op |
+| 1       | 5424 ns/op | 5368 ns/op | 5629 ns/op |
 |         |            |            |            |
