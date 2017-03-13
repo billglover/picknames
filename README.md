@@ -18,3 +18,10 @@ My first attempt wasn't written in Go, but for the sake of comparison between al
  1. assign each entry a random number
  1. sort the list of names according to the number
  1. pick the first `n` names from the list
+
+## Benchmarking Results
+
+| Attempt | Pick 1     | Pick 5     | Pick 10    |
+| ------- | ---------- | ---------- | ---------- |
+| 1vvvvvv | 5424 ns/op | 5368 ns/op | 5629 ns/op |
+|         |            |            |            |
