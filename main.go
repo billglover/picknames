@@ -27,9 +27,12 @@ func (a byScore) Len() int           { return len(a) }
 func (a byScore) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a byScore) Less(i, j int) bool { return a[i].Score < a[j].Score }
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 func main() {
 	flag.Parse()
-	rand.Seed(time.Now().UnixNano())
 
 	// open the list of names
 	// TODO: should be able to accept STDIN as well
