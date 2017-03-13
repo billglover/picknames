@@ -31,8 +31,6 @@ func main() {
 	flag.Parse()
 	rand.Seed(time.Now().UnixNano())
 
-	var list []person
-
 	// open the list of names
 	// TODO: should be able to accept STDIN as well
 	f, err := os.Open("data/test_data.txt")
@@ -43,6 +41,22 @@ func main() {
 
 	// read the names into memory and assign each a random score
 	r := bufio.NewReader(f)
+
+	// pick names from the list
+	results, _ := pickRandom(*count, r)
+
+	// return the number of names requested
+	for c := 0; c < *count; c++ {
+		log.Printf("%s\n", results[c])
+	}
+
+}
+
+func pickRandom(n int, r *bufio.Reader) (p []string, e error) {
+	p = make([]string, n)
+
+	var list []person
+
 	for {
 		name, err := r.ReadString('\n')
 		if err == io.EOF {
@@ -65,6 +79,8 @@ func main() {
 
 	// return the number of names requested
 	for c := 0; c < *count; c++ {
-		log.Printf("%s\n", list[c].Name)
+		p[c] = list[c].Name
 	}
+
+	return
 }
