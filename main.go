@@ -43,10 +43,11 @@ func main() {
 	}
 
 	// read the names into memory and assign each a random score
-	r := bufio.NewReader(f)
+	//r := bufio.NewReader(f)
 
 	// pick names from the list
-	results, _ := pickRandom(*count, r)
+	//results, _ := pickRandom(*count, r)
+	results, _ := pickRandom2(*count, f)
 
 	// return the number of names requested
 	for c := 0; c < *count; c++ {
@@ -84,6 +85,25 @@ func pickRandom(n int, r *bufio.Reader) (p []string, e error) {
 	for c := 0; c < *count; c++ {
 		p[c] = list[c].Name
 	}
+
+	return
+}
+
+func pickRandom2(n int, f *os.File) (p []string, e error) {
+	p = make([]string, n)
+
+	r := bufio.NewReader(f)
+	lines := 0
+
+	for {
+		_, e = r.ReadString('\n')
+		if e == io.EOF {
+			break
+		}
+		lines++
+	}
+
+	log.Println("lines:", lines)
 
 	return
 }
