@@ -50,6 +50,7 @@ func main() {
 	results, _ := pickRandom2(*count, f)
 
 	// return the number of names requested
+	log.Printf("results: %d\n", len(results))
 	for c := 0; c < *count; c++ {
 		log.Printf("%s\n", results[c])
 	}
@@ -91,19 +92,34 @@ func pickRandom(n int, r *bufio.Reader) (p []string, e error) {
 
 func pickRandom2(n int, f *os.File) (p []string, e error) {
 	p = make([]string, n)
+	var list []string
 
 	r := bufio.NewReader(f)
 	lines := 0
 
 	for {
-		_, e = r.ReadString('\n')
+		name, e := r.ReadString('\n')
 		if e == io.EOF {
 			break
 		}
+		list = append(list, strings.TrimRight(name, "\n"))
 		lines++
 	}
 
+	if *count > lines {
+		log.Fatalf("asking for more names (%d) than we have in the input file (%d)\n", *count, lines)
+	}
+
 	log.Println("lines:", lines)
+
+	for c := 0; c < *count; c++ {
+		i := rand.Intn(len(list))
+		p[c] = list[i]
+
+		// delete value so it can't be selected again
+		list[i] = list[len(list)-1]
+		list = list[:len(list)-1]
+	}
 
 	return
 }
