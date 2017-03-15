@@ -37,6 +37,6 @@ Now that we have a baseline, I wanted to try something different. Rather than tr
 
 | Attempt | Pick 1     | Pick 5     | Pick 10    |
 | ------- | ---------- | ---------- | ---------- |
-| 1       | 5424 ns/op | 5368 ns/op | 5629 ns/op |
-| 2       |            |            |            |
+| 1       | 5438 ns/op | 5812 ns/op | 5854 ns/op |
+| 2       | 5434 ns/op | 5426 ns/op | 5386 ns/op |
 |         |            |            |            |
