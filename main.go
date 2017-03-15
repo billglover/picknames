@@ -110,8 +110,6 @@ func pickRandom2(n int, f *os.File) (p []string, e error) {
 		log.Fatalf("asking for more names (%d) than we have in the input file (%d)\n", *count, lines)
 	}
 
-	log.Println("lines:", lines)
-
 	for c := 0; c < *count; c++ {
 		i := rand.Intn(len(list))
 		p[c] = list[i]
